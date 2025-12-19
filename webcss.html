@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Financial Data Deep Practice</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f9; }
+    header { background: #002b5c; color: #fff; padding: 15px 30px; }
+    nav ul { display: flex; list-style: none; gap: 20px; padding-left: 0; }
+    nav ul li a { color: #fff; text-decoration: none; font-size: 14px; }
+    .layout { display: flex; }
+    .sidebar {
+      width: 240px;
+      background: #fff;
+      height: 100vh;
+      padding: 20px;
+      border-right: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+    }
+    .sidebar h3 { margin-top: 0; }
+    .sidebar a { display: block; margin: 8px 0; text-decoration: none; color: #002b5c; }
+
+    .content { padding: 30px; flex-grow: 1; }
+
+    .section { background: #fff; padding: 20px; margin-bottom: 30px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+
+    .stock-card, .fund-card {
+      border: 1px solid #ccc; padding: 15px; border-radius: 5px; margin-bottom: 20px;
+    }
+
+    .stock-price { font-size: 22px; font-weight: bold; color: #0f7b12; }
+    .red { color: red; }
+
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 10px; font-size: 14px; }
+
+    /* Accordion */
+    .accordion { margin-top: 20px; }
+    .accordion-item { background: #fdfdfd; border: 1px solid #ccc; margin: 10px 0; border-radius: 6px; }
+    .accordion-header { padding: 12px; background: #eee; cursor: pointer; }
+    .accordion-body { display: none; padding: 15px; }
+
+    /* Tabs */
+    .tab-menu { display: flex; gap: 20px; border-bottom: 2px solid #ddd; margin-bottom: 10px; }
+    .tab-menu div { padding: 10px; cursor: pointer; }
+    .tab-content { display: none; }
+
+    /* Nested boxes */
+    .nested-box { border: 1px dashed #333; padding: 10px; }
+    .box-level-1 { background: #eef5ff; }
+    .box-level-2 { background: #e0ecff; margin: 10px; }
+    .box-level-3 { background: #d4e4ff; margin: 10px; }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Financial Data Deep Practice</h1>
+  <nav>
+    <ul>
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Markets</a></li>
+      <li><a href="#">Mutual Funds</a></li>
+      <li><a href="#">Economy</a></li>
+      <li><a href="#">Research</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <h3>Sections</h3>
+  <a href="#stocks">Stock Data</a>
+  <a href="#funds">Mutual Funds</a>
+  <a href="#ratios">Financial Ratios</a>
+  <a href="#news">News</a>
+  <a href="#forms">Financial Form</a>
+  <a href="#nested">Nested Elements</a>
+  <a href="#advanced-table">Advanced Tables</a>
+  <a href="#accordion">Accordion</a>
+  <a href="#tabs">Tabs</a>
+</aside>
+
+<!-- CONTENT -->
+<div class="content">
+
+<!-- STOCK SECTION -->
+<div class="section" id="stocks">
+  <h2>Stock Market Overview</h2>
+
+  <div class="stock-card" data-stock="RELIANCE" data-sector="Energy">
+    <h3 class="stock-name">Reliance Industries Ltd</h3>
+    <img src="https://dummyimage.com/80x40/000/fff&text=RIL" alt="RIL Logo" class="stock-logo"/>
+    <div class="stock-price" id="reliance-price">₹2,623.45</div>
+    <p class="change red">-1.24%</p>
+    <a href="https://finance.example.com/reliance" data-type="details">View Details</a>
+    <button data-action="buy" data-symbol="RELIANCE">Buy</button>
+  </div>
+
+  <div class="stock-card" data-stock="INFY" data-sector="IT">
+    <h3 class="stock-name">Infosys Ltd</h3>
+    <img src="https://dummyimage.com/80x40/002244/fff&text=INFY" alt="INFY Logo">
+    <div class="stock-price">₹1,542.10</div>
+    <p class="change">+0.82%</p>
+    <a href="https://finance.example.com/infy">View Details</a>
+    <button data-action="watchlist" data-symbol="INFY">Add to Watchlist</button>
+  </div>
+
+</div>
+
+<!-- MUTUAL FUND SECTION -->
+<div class="section" id="funds">
+  <h2>Mutual Funds</h2>
+
+  <div class="fund-card" data-fund-type="Index">
+    <h3 class="mf-name" id="mf-uti">UTI Nifty Index Fund</h3>
+    <span class="mf-nav" data-value="198.46">NAV: 198.46</span>
+    <span class="mf-date">Updated: 28-Nov-2024</span>
+  </div>
+
+  <div class="fund-card" data-fund-type="Smallcap">
+    <h3 class="mf-name">SBI Small Cap Fund</h3>
+    <span class="mf-nav" data-value="128.92">NAV: 128.92</span>
+    <span class="mf-date">Updated: 28-Nov-2024</span>
+  </div>
+
+  <a href="https://example.com/allfunds" data-category="fund-list">Explore All Funds</a>
+</div>
+
+<!-- FINANCIAL RATIOS -->
+<div class="section" id="ratios">
+  <h2>Financial Ratios</h2>
+
+  <table>
+    <thead>
+      <tr><th>Company</th><th>P/E</th><th>ROE</th><th>ROA</th><th>Debt/Equity</th></tr>
+    </thead>
+    <tbody>
+      <tr data-symbol="RELIANCE">
+        <td>Reliance</td><td>28.3</td><td>9.5%</td><td>4.2%</td><td>0.37</td>
+      </tr>
+      <tr data-symbol="TCS">
+        <td>TCS</td><td>32.1</td><td>40.2%</td><td>30.1%</td><td>0.09</td>
+      </tr>
+      <tr data-symbol="HDFCBANK">
+        <td>HDFC Bank</td><td>20.4</td><td>16.7%</td><td>10.5%</td><td>1.22</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<!-- FINANCIAL NEWS -->
+<div class="section" id="news">
+  <h2>Financial News</h2>
+
+  <div class="news-item" data-type="markets">
+    <a href="https://news.example.com/sensex" target="_blank">
+      Sensex soars 450 points on global rally
+    </a>
+    <p class="summary">FII inflows boosted investor sentiment.</p>
+    <img src="https://dummyimage.com/300x120/eee/333&text=Sensex+News" />
+  </div>
+
+  <div class="news-item" data-type="banking">
+    <a href="https://news.example.com/rbi">
+      RBI likely to keep interest rates unchanged
+    </a>
+    <p class="summary">Economists see stable policy stance.</p>
+  </div>
+
+  <button data-btn="load-more-news">Load More</button>
+</div>
+
+<!-- FINANCIAL FORM -->
+<div class="section" id="forms">
+  <h2>Financial Input Form</h2>
+
+  <form id="finance-form" data-form="investment">
+    <label>Full Name:</label>
+    <input type="text" name="fullname" value="Sachin Jain"/><br/><br/>
+
+    <label>Investment Amount:</label>
+    <input type="number" name="amount" value="50000" data-min="1000"/><br/><br/>
+
+    <label>Select Asset Class:</label>
+    <select name="asset" data-category="investment-type">
+      <option value="stocks" selected>Stocks</option>
+      <option value="mutualfunds">Mutual Funds</option>
+      <option value="bonds">Bonds</option>
+    </select><br/><br/>
+
+    <label>Your Risk Profile:</label><br/>
+    <input type="radio" name="risk" value="low"> Low<br/>
+    <input type="radio" name="risk" value="medium" checked> Medium<br/>
+    <input type="radio" name="risk" value="high"> High<br/><br/>
+
+    <label>Comments:</label><br/>
+    <textarea name="comments">Looking for growth-oriented funds.</textarea><br/><br/>
+
+    <button type="submit" data-submit="investment">Submit</button>
+  </form>
+</div>
+
+<!-- HIGHLY NESTED ELEMENTS -->
+<div class="section" id="nested">
+  <h2>Deep Nested Structure</h2>
+
+  <div class="nested-box box-level-1" data-layer="1">
+    Level 1
+    <div class="nested-box box-level-2" data-layer="2">
+      Level 2
+      <div class="nested-box box-level-3" data-layer="3">
+        Level 3
+        <span class="deep-value" data-hidden="true">₹1,23,45,678</span>
+
+        <div class="inner-wrapper">
+          <span class="label">Market Cap:</span>
+          <span class="value" data-crore="1983">₹19,83,000 Cr</span>
+
+          <div class="sub-nest">
+            <p class="info">52 Week High: <span class="high">₹2,990</span></p>
+            <p class="low-info">52 Week Low: <span class="low">₹2,100</span></p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADVANCED MULTI-TABLE SECTION -->
+<div class="section" id="advanced-table">
+  <h2>Advanced Multi-Table Data</h2>
+
+  <h3>Quarterly Results</h3>
+  <table>
+    <thead><tr><th>Quarter</th><th>Revenue</th><th>Profit</th></tr></thead>
+    <tbody>
+      <tr><td>Q1</td><td data-rev="18500">18,500 Cr</td><td data-profit="4200">4,200 Cr</td></tr>
+      <tr><td>Q2</td><td data-rev="19200">19,200 Cr</td><td data-profit="4500">4,500 Cr</td></tr>
+      <tr><td>Q3</td><td data-rev="20100">20,100 Cr</td><td data-profit="4800">4,800 Cr</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Broker Ratings</h3>
+  <table>
+    <thead><tr><th>Broker</th><th>Rating</th><th>Target Price</th></tr></thead>
+    <tbody>
+      <tr><td>Goldman Sachs</td><td>Buy</td><td data-target="3100">₹3,100</td></tr>
+      <tr><td>ICICI Direct</td><td>Hold</td><td data-target="2850">₹2,850</td></tr>
+      <tr><td>Motilal Oswal</td><td>Strong Buy</td><td data-target="3300">₹3,300</td></tr>
+    </tbody>
+  </table>
+
+</div>
+
+<!-- ACCORDION -->
+<div class="section" id="accordion">
+  <h2>Market Insights (Accordion)</h2>
+
+  <div class="accordion">
+    <div class="accordion-item">
+      <div class="accordion-header">Global Markets</div>
+      <div class="accordion-body">
+        <p>Global markets saw mixed performance as US yields dipped.</p>
+        <a href="#" data-type="global-report">Read global report</a>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Sector Overview</div>
+      <div class="accordion-body">
+        <p>IT sector outperformed while metals dragged.</p>
+        <span class="highlight" data-sector="IT">IT Stocks Rising</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TABS -->
+<div class="section" id="tabs">
+  <h2>Data Tabs</h2>
+
+  <div class="tab-menu">
+    <div data-tab="overview">Overview</div>
+    <div data-tab="details">Details</div>
+    <div data-tab="analysis">Analysis</div>
+  </div>
+
+  <div class="tab-content" id="tab-overview">
+    <p>Total Market Cap: <span data-total-cap="28400000">₹28,40,000 Cr</span></p>
+  </div>
+
+  <div class="tab-content" id="tab-details">
+    <p>Top Performers: <span class="winner" data-stock="TCS">TCS</span></p>
+  </div>
+
+  <div class="tab-content" id="tab-analysis">
+    <p>Market Sentiment: <span data-sentiment="bullish">Bullish</span></p>
+  </div>
+</div>
+
+</div> <!-- END CONTENT -->
+
+</div> <!-- END LAYOUT -->
+
+</body>
+</html>
