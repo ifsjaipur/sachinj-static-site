@@ -6,13 +6,18 @@
 <body>
 <h1>Hello Students @ ifs Jaipur </h1>
 
-  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 <script type="module">
-	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+  import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js'
 
-	createChat({
-		webhookUrl: 'https://workflow.financialskills.in/webhook/ffcf29b6-19e9-40fd-81a6-132910560043/chat'
-	});
+  Typebot.initBubble({
+    typebot: "inquiry",
+    apiHost: "https://bot.aiwf.in",
+    theme: {
+      button: { backgroundColor: "#058247" },
+      chatWindow: { backgroundColor: "#FAF3EA" },
+    },
+  });
 </script>
+
 </body>
 </html>
