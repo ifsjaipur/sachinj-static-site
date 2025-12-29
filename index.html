@@ -1,228 +1,1068 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>IFS Jaipur | Meta Tech Training</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read to Lead - Leadership Through Structured Reading</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Lora:wght@400;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #1a2332;
+            --primary-accent: #2c5f4f;
+            --secondary-accent: #8b4513;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --background: #fafaf8;
+            --card-bg: #ffffff;
+            --border-light: #e8e8e6;
+        }
 
-<style>
-  :root {
-    --bg-main: radial-gradient(1200px 600px at 10% -20%, #1e293b 0%, #020617 60%);
-    --glass-bg: rgba(255, 255, 255, 0.06);
-    --glass-border: rgba(255, 255, 255, 0.12);
-    --text-main: #e5e7eb;
-    --text-muted: #9ca3af;
-    --accent: #22c55e; /* subtle n8n-like green */
-  }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  }
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
 
-  body {
-    min-height: 100vh;
-    background: var(--bg-main);
-    color: var(--text-main);
-    line-height: 1.6;
-  }
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            animation: slideDown 0.6s ease-out;
+        }
 
-  header {
-    padding: 100px 20px 80px;
-    text-align: center;
-  }
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
 
-  header h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 18px;
-  }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-  header p {
-    max-width: 900px;
-    margin: auto;
-    font-size: 1.15rem;
-    color: var(--text-muted);
-  }
+        .logo {
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+        }
 
-  section {
-    max-width: 1200px;
-    margin: auto;
-    padding: 80px 20px;
-  }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
 
-  .section-title {
-    text-align: center;
-    margin-bottom: 60px;
-  }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
 
-  .section-title h2 {
-    font-size: 2.3rem;
-    font-weight: 600;
-    margin-bottom: 12px;
-  }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-accent);
+            transition: width 0.3s ease;
+        }
 
-  .section-title p {
-    color: var(--text-muted);
-    font-size: 1.05rem;
-  }
+        .nav-links a:hover {
+            color: var(--primary-accent);
+        }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 28px;
-  }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-  .glass-card {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 18px;
-    padding: 32px;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  }
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 8rem 2rem 6rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
 
-  .glass-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(34, 197, 94, 0.35);
-    box-shadow: 0 0 0 1px rgba(34,197,94,0.2),
-                0 20px 40px rgba(0,0,0,0.4);
-  }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(44, 95, 79, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 8s ease-in-out infinite;
+        }
 
-  .glass-card h3 {
-    font-size: 1.35rem;
-    margin-bottom: 12px;
-    font-weight: 600;
-  }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
 
-  .glass-card p {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-  }
+        .hero-content {
+            max-width: 700px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+        }
 
-  .focus {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 22px;
-    padding: 60px 40px;
-    backdrop-filter: blur(16px);
-    text-align: center;
-  }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-  .focus h2 {
-    font-size: 2.2rem;
-    margin-bottom: 18px;
-  }
+        .hero-tagline {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-accent);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
 
-  .focus p {
-    max-width: 950px;
-    margin: auto;
-    font-size: 1.05rem;
-    color: var(--text-muted);
-  }
+        .hero h1 {
+            font-family: 'Lora', serif;
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
 
-  footer {
-    border-top: 1px solid rgba(255,255,255,0.08);
-    text-align: center;
-    padding: 30px 15px;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-  }
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
 
-  footer span {
-    color: var(--text-main);
-  }
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
 
-  @media (max-width: 768px) {
-    header h1 {
-      font-size: 2.4rem;
-    }
-  }
-</style>
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--primary-dark);
+            color: white;
+            box-shadow: 0 4px 15px rgba(26, 35, 50, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 95, 79, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-dark);
+            border: 2px solid var(--primary-dark);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            background: var(--card-bg);
+            padding: 6rem 2rem;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .philosophy-card {
+            padding: 2rem;
+            border-left: 3px solid var(--primary-accent);
+            background: var(--background);
+            transition: transform 0.3s ease;
+        }
+
+        .philosophy-card:hover {
+            transform: translateX(10px);
+        }
+
+        .philosophy-card h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .philosophy-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Why Section */
+        .why-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.03) 0%, rgba(44, 95, 79, 0.03) 100%);
+        }
+
+        .why-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .why-point {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .why-point::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.5rem;
+            color: var(--primary-accent);
+            font-weight: bold;
+        }
+
+        .why-point h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-dark);
+        }
+
+        .why-point p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 6rem 2rem;
+            background: var(--card-bg);
+        }
+
+        .process-timeline {
+            max-width: 800px;
+            margin: 4rem auto 0;
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-accent), var(--secondary-accent));
+        }
+
+        .process-step {
+            position: relative;
+            padding-left: 5rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInLeft 0.6s ease-out forwards;
+        }
+
+        .process-step:nth-child(1) { animation-delay: 0.1s; }
+        .process-step:nth-child(2) { animation-delay: 0.2s; }
+        .process-step:nth-child(3) { animation-delay: 0.3s; }
+        .process-step:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 42px;
+            height: 42px;
+            background: var(--primary-dark);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .process-step h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-dark);
+        }
+
+        .process-step p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Programs Section */
+        .programs {
+            padding: 6rem 2rem;
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        .programs .section-title,
+        .programs .section-subtitle {
+            color: white;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .program-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-accent);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .program-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .program-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .program-card h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .program-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-topics {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .program-topics li {
+            padding: 0.5rem 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .program-topics li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-accent);
+            font-size: 1.2rem;
+        }
+
+        /* Organizations Section */
+        .organizations {
+            padding: 6rem 2rem;
+            background: var(--background);
+        }
+
+        .org-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-dark);
+        }
+
+        .benefit-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            padding: 6rem 2rem;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .quote-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            line-height: 1.6;
+            color: var(--primary-dark);
+            font-style: italic;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .quote-author {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 2rem;
+            background: var(--background);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-item {
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-left: 3px solid var(--secondary-accent);
+        }
+
+        .value-item h4 {
+            font-family: 'Lora', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        .value-item p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary-accent) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Lora', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .cta-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cta-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            border: none;
+            font-size: 1rem;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .cta-form button {
+            padding: 1rem 2.5rem;
+            background: white;
+            color: var(--primary-dark);
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .cta-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Lora', serif;
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .quote-text {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Read to Lead</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#why">Why Read</a></li>
+                <li><a href="#how">How It Works</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#organizations">For Organizations</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#join">Join</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<!-- HERO -->
-<header>
-  <h1>IFS Jaipur – Meta Tech Training</h1>
-  <p>
-    We are currently conducting an <strong>industry-oriented Meta Technology Training Program</strong>,
-    focused on data, automation, and AI-driven business workflows using modern tools.
-  </p>
-</header>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-tagline">A Leadership Initiative</div>
+            <h1>Leadership Begins with Reading</h1>
+            <p class="hero-subtitle">In the age of AI, thinking is your edge. Build clarity, depth, and decision-making ability through structured reading and reflection.</p>
+            <div class="cta-buttons">
+                <a href="#join" class="btn btn-primary">Start Your Journey</a>
+                <a href="#how" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
 
-<!-- COURSE -->
-<section>
-  <div class="section-title">
-    <h2>Meta Tech Course Stack</h2>
-    <p>Skills designed for real business systems — not just tools</p>
-  </div>
+    <!-- Philosophy Section -->
+    <section class="philosophy">
+        <div class="section-container">
+            <h2 class="section-title">The Read to Lead Philosophy</h2>
+            <p class="section-subtitle">We believe that true leadership is built on a foundation of deep thinking, not quick consumption. Books build leaders before titles do.</p>
+            
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <h3>Reading</h3>
+                    <p>Select high-impact books that challenge your thinking and broaden your perspective. Read with intention, not just for completion.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Reflection</h3>
+                    <p>Engage with structured quizzes and reflection activities that deepen your understanding and reveal insights you might have missed.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Application</h3>
+                    <p>Connect ideas to your real-world challenges. Participate in discussions that bridge theory and practice.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Leadership</h3>
+                    <p>Develop the thinking clarity and decision-making ability that distinguishes true leaders from mere managers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <div class="grid">
-    <div class="glass-card">
-      <h3>Advanced Excel</h3>
-      <p>Analytical thinking, automation logic, and professional reporting foundations.</p>
-    </div>
+    <!-- Why Section -->
+    <section id="why" class="why-section fade-in-section">
+        <div class="section-container">
+            <h2 class="section-title">Why Structured Reading Matters</h2>
+            <p class="section-subtitle">In an era of endless content and AI-generated summaries, deep reading is becoming a competitive advantage.</p>
+            
+            <div class="why-grid">
+                <div class="why-point">
+                    <h3>AI Can't Replace Thinking</h3>
+                    <p>While AI can summarize, only you can synthesize insights and apply them to your unique context. Reading builds the mental models that make you irreplaceable.</p>
+                </div>
+                <div class="why-point">
+                    <h3>Depth Over Speed</h3>
+                    <p>Quick summaries give you information. Deep reading gives you wisdom, judgment, and the ability to see connections others miss.</p>
+                </div>
+                <div class="why-point">
+                    <h3>Leaders Are Readers</h3>
+                    <p>Every great leader is a reader. They don't just consume content—they engage with ideas that challenge and transform their thinking.</p>
+                </div>
+                <div class="why-point">
+                    <h3>Structured Learning Works</h3>
+                    <p>Reading alone is good. Reading with reflection, quizzes, and discussion is transformative. Structure turns reading into lasting knowledge.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="glass-card">
-      <h3>Power Query</h3>
-      <p>Automated data cleaning, transformation, and repeatable data pipelines.</p>
-    </div>
+    <!-- How It Works -->
+    <section id="how" class="how-it-works fade-in-section">
+        <div class="section-container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">A simple, structured approach to leadership development through reading.</p>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Select a Book</h3>
+                    <p>Choose from our curated reading programs in Leadership, Management, Mindset, and more. Each book is selected for its transformative potential.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Read Within a Time Window</h3>
+                    <p>Join a cohort and commit to reading within a specific timeframe. The shared timeline creates accountability and enables meaningful discussions.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Participate in Quizzes & Reflection</h3>
+                    <p>Engage with open-book quizzes and reflection challenges that test your understanding and deepen your insights. These aren't exams—they're tools for thinking.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Learn Through Discussion</h3>
+                    <p>Connect with fellow professionals in online discussions. Share perspectives, challenge ideas, and discover applications you hadn't considered.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="glass-card">
-      <h3>Power Pivot</h3>
-      <p>Data modeling, DAX logic, and scalable analytical frameworks.</p>
-    </div>
+    <!-- Programs Section -->
+    <section id="programs" class="programs fade-in-section">
+        <div class="section-container">
+            <h2 class="section-title">Current Reading Programs</h2>
+            <p class="section-subtitle">Carefully curated tracks for professionals at different stages of their leadership journey.</p>
+            
+            <div class="programs-grid">
+                <div class="program-card">
+                    <h3>Leadership</h3>
+                    <p>Develop the mindset, skills, and wisdom that distinguish great leaders from good managers.</p>
+                    <ul class="program-topics">
+                        <li>Strategic thinking & vision</li>
+                        <li>Influence & persuasion</li>
+                        <li>Decision-making frameworks</li>
+                        <li>Leading through change</li>
+                    </ul>
+                </div>
+                <div class="program-card">
+                    <h3>Management</h3>
+                    <p>Master the practical skills of managing teams, projects, and organizational complexity.</p>
+                    <ul class="program-topics">
+                        <li>People management</li>
+                        <li>Performance & accountability</li>
+                        <li>Team building & culture</li>
+                        <li>Operational excellence</li>
+                    </ul>
+                </div>
+                <div class="program-card">
+                    <h3>Mindset</h3>
+                    <p>Build the mental models, habits, and perspectives that fuel long-term success and resilience.</p>
+                    <ul class="program-topics">
+                        <li>Growth mindset & learning</li>
+                        <li>Emotional intelligence</li>
+                        <li>Focus & productivity</li>
+                        <li>Resilience & adaptability</li>
+                    </ul>
+                </div>
+                <div class="program-card">
+                    <h3>Health & Lifestyle</h3>
+                    <p>Understand the science of well-being and sustainable high performance.</p>
+                    <ul class="program-topics">
+                        <li>Energy management</li>
+                        <li>Sleep & recovery</li>
+                        <li>Stress & mental health</li>
+                        <li>Long-term vitality</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="glass-card">
-      <h3>Power BI</h3>
-      <p>Business intelligence dashboards and decision-focused reporting.</p>
-    </div>
+    <!-- Organizations Section -->
+    <section id="organizations" class="organizations fade-in-section">
+        <div class="section-container">
+            <h2 class="section-title">For Organizations</h2>
+            <p class="section-subtitle">Build a culture of learning and leadership development in your organization.</p>
+            
+            <div class="org-benefits">
+                <div class="benefit-card">
+                    <div class="benefit-icon">📚</div>
+                    <h3>Leadership Pipeline</h3>
+                    <p>Develop your future leaders through structured reading programs that build critical thinking and strategic perspective.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Custom Programs</h3>
+                    <p>Tailored reading tracks aligned with your organizational goals, values, and leadership competencies.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💡</div>
+                    <h3>Shared Learning</h3>
+                    <p>Create a common language and shared mental models across your leadership team through collective reading experiences.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h3>Measurable Impact</h3>
+                    <p>Track participation, engagement, and learning outcomes through our structured quiz and reflection framework.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="glass-card">
-      <h3>n8n Automation</h3>
-      <p>Workflow automation, APIs, integrations, and backend business logic.</p>
-    </div>
+    <!-- Quote Section -->
+    <section class="quote-section fade-in-section">
+        <div class="quote-container">
+            <p class="quote-text">"Not all readers are leaders, but all leaders are readers."</p>
+            <p class="quote-author">— Harry S. Truman</p>
+        </div>
+    </section>
 
-    <div class="glass-card">
-      <h3>Typebot</h3>
-      <p>Interactive flows for lead capture, onboarding, and customer automation.</p>
-    </div>
-  </div>
-</section>
+    <!-- About Section -->
+    <section id="about" class="about fade-in-section">
+        <div class="section-container">
+            <h2 class="section-title">About Read to Lead</h2>
+            <div class="about-content">
+                <p>Read to Lead was founded on a simple belief: the best investment a professional can make is in their own thinking. In a world of shortcuts, summaries, and surface-level content, we create space for depth.</p>
+                
+                <p>We're not a coaching platform. We're not selling motivational hype. We're building a community of professionals who believe that reading, reflection, and structured learning are the foundation of genuine leadership.</p>
+                
+                <p>Our approach is thoughtful, evidence-based, and designed for working professionals who want to develop themselves without compromising their authenticity or judgment.</p>
+                
+                <h3 style="font-family: 'Lora', serif; font-size: 1.8rem; margin: 3rem 0 1.5rem; color: var(--primary-dark);">Our Values</h3>
+                
+                <div class="values-grid">
+                    <div class="value-item">
+                        <h4>Depth</h4>
+                        <p>We value deep engagement over quick consumption.</p>
+                    </div>
+                    <div class="value-item">
+                        <h4>Integrity</h4>
+                        <p>No hype, no shortcuts, no false promises.</p>
+                    </div>
+                    <div class="value-item">
+                        <h4>Accessibility</h4>
+                        <p>Leadership development for all, not just the privileged few.</p>
+                    </div>
+                    <div class="value-item">
+                        <h4>Community</h4>
+                        <p>Learning together creates deeper insights than learning alone.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- FOCUS -->
-<section>
-  <div class="focus">
-    <h2>Business Automation & AI Workflows</h2>
-    <p>
-      The program emphasizes designing <strong>end-to-end automation systems</strong> —
-      combining data tools, no-code platforms, and AI-powered workflows that are used
-      in real operations, analytics, marketing, and decision automation.
-    </p>
-  </div>
-</section>
-<iframe
-  src="https://sachinj-workflow.ifsjaipur.cloud/form/addcust"
-  style="
-    width: 100%;
-    max-width: 520px;
-    height: 760px;
-    border: none;
-    border-radius: 16px;
-    background: transparent;
-  "
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade"
-></iframe>
+    <!-- CTA Section -->
+    <section id="join" class="cta-section">
+        <div class="section-container">
+            <h2>Ready to Lead Through Reading?</h2>
+            <p>Join our next cohort and start your leadership journey today.</p>
+            <form class="cta-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Get Started</button>
+            </form>
+            <p style="margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.8;">Or connect with us on WhatsApp for more information</p>
+        </div>
+    </section>
 
-<footer>
-  © <span>IFS Jaipur</span> · Meta Tech Training · ifsjaipur.cloud
-</footer>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Read to Lead</h4>
+                <p>Building leaders through structured reading and reflection.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Programs</h4>
+                <ul>
+                    <li><a href="#programs">Leadership</a></li>
+                    <li><a href="#programs">Management</a></li>
+                    <li><a href="#programs">Mindset</a></li>
+                    <li><a href="#programs">Health & Lifestyle</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#how">How It Works</a></li>
+                    <li><a href="#why">Why Reading Matters</a></li>
+                    <li><a href="#organizations">For Organizations</a></li>
+                    <li><a href="#about">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#join">Join a Program</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Give Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Read to Lead. All rights reserved. | Built for thinkers, not consumers.</p>
+        </div>
+    </footer>
 
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Form submission handler
+        document.querySelector('.cta-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest! We will contact you soon to get you started on your Read to Lead journey.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
