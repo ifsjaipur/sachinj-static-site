@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samatva — Health, Wealth, Happiness</title>
+    <meta name="description" content="A thoughtful resource for working professionals seeking sustainable growth in health, wealth, and happiness.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =====================================================
+           DESIGN TOKENS
+           ===================================================== */
+        :root {
+            /* Colors */
+            --color-bg-primary: #FAFAF8;
+            --color-bg-secondary: #F5F4F0;
+            --color-text-primary: #2B2B2B;
+            --color-text-secondary: #5A5A5A;
+            --color-text-tertiary: #8B8B8B;
+            --color-accent-earth: #8B7355;
+            --color-accent-leaf: #6B8E6F;
+            --color-accent-stone: #7A8B99;
+            --color-border: #E8E7E3;
+            --color-divider: #D4D3CF;
+            --color-focus: #6B8E6F;
+
+            /* Typography */
+            --font-display: 'Crimson Pro', Georgia, serif;
+            --font-body: 'Source Serif 4', Georgia, serif;
+            --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+            /* Type Scale */
+            --text-xs: 0.8rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.563rem;
+            --text-3xl: 1.953rem;
+            --text-4xl: 2.441rem;
+            --text-5xl: 3.052rem;
+
+            /* Spacing */
+            --space-1: 0.5rem;
+            --space-2: 1rem;
+            --space-3: 1.5rem;
+            --space-4: 2rem;
+            --space-5: 3rem;
+            --space-6: 4rem;
+            --space-7: 6rem;
+            --space-8: 8rem;
+
+            /* Layout */
+            --content-max-width: 720px;
+            --container-padding: 5%;
+        }
+
+        /* =====================================================
+           RESET & BASE STYLES
+           ===================================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: var(--text-base);
+            line-height: 1.7;
+            color: var(--color-text-primary);
+            background-color: var(--color-bg-primary);
+        }
+
+        /* =====================================================
+           TYPOGRAPHY
+           ===================================================== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-3);
+        }
+
+        h1 { font-size: var(--text-4xl); }
+        h2 { font-size: var(--text-3xl); }
+        h3 { font-size: var(--text-2xl); }
+        h4 { font-size: var(--text-xl); }
+
+        p {
+            margin-bottom: var(--space-3);
+            max-width: 65ch;
+        }
+
+        a {
+            color: var(--color-accent-leaf);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
+
+        a:hover {
+            border-bottom-color: var(--color-accent-leaf);
+        }
+
+        a:focus {
+            outline: 2px solid var(--color-focus);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        /* =====================================================
+           LAYOUT
+           ===================================================== */
+        .container {
+            max-width: var(--content-max-width);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        /* =====================================================
+           HEADER
+           ===================================================== */
+        .site-header {
+            padding: var(--space-4) 0;
+            border-bottom: 1px solid var(--color-border);
+            background-color: var(--color-bg-primary);
+        }
+
+        .site-title {
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-2);
+            text-align: center;
+            letter-spacing: 0.02em;
+            color: var(--color-text-primary);
+        }
+
+        .main-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-3);
+            flex-wrap: wrap;
+            font-family: var(--font-ui);
+            font-size: var(--text-sm);
+        }
+
+        .main-nav a {
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: var(--space-1) 0;
+            font-weight: 500;
+        }
+
+        .main-nav a.active,
+        .main-nav a:hover {
+            color: var(--color-text-primary);
+        }
+
+        /* =====================================================
+           MAIN CONTENT
+           ===================================================== */
+        .main-content {
+            padding: var(--space-7) 0;
+        }
+
+        /* =====================================================
+           HERO SECTION
+           ===================================================== */
+        .hero {
+            text-align: center;
+            margin-bottom: var(--space-8);
+            padding: var(--space-5) 0;
+        }
+
+        .hero-title {
+            font-size: var(--text-4xl);
+            line-height: 1.35;
+            margin-bottom: var(--space-4);
+            font-weight: 400;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-subtitle {
+            font-size: var(--text-lg);
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* =====================================================
+           PILLARS SECTION
+           ===================================================== */
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--space-5);
+            margin-bottom: var(--space-7);
+        }
+
+        .pillar {
+            padding: var(--space-5) var(--space-4);
+            border: 1px solid var(--color-border);
+            background-color: var(--color-bg-primary);
+            transition: border-color 0.3s ease;
+        }
+
+        .pillar:hover {
+            border-color: var(--color-accent-leaf);
+        }
+
+        .pillar h3 {
+            font-size: var(--text-xl);
+            margin-bottom: var(--space-2);
+            font-weight: 600;
+        }
+
+        .pillar p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-3);
+            font-size: var(--text-base);
+            line-height: 1.6;
+        }
+
+        .pillar-link {
+            font-family: var(--font-ui);
+            font-size: var(--text-sm);
+            color: var(--color-accent-leaf);
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        /* =====================================================
+           SECONDARY LINKS
+           ===================================================== */
+        .secondary-links {
+            text-align: center;
+            margin-bottom: var(--space-7);
+            padding: var(--space-4) 0;
+            border-top: 1px solid var(--color-divider);
+            border-bottom: 1px solid var(--color-divider);
+        }
+
+        .secondary-links p {
+            font-family: var(--font-ui);
+            font-size: var(--text-sm);
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 0;
+        }
+
+        .secondary-links a {
+            color: var(--color-text-secondary);
+        }
+
+        .secondary-links a:hover {
+            color: var(--color-accent-leaf);
+        }
+
+        /* =====================================================
+           WHAT THIS IS SECTION
+           ===================================================== */
+        .what-this-is {
+            margin-bottom: var(--space-7);
+        }
+
+        .what-this-is h3 {
+            text-align: center;
+            margin-bottom: var(--space-5);
+            font-size: var(--text-2xl);
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-5);
+        }
+
+        .two-column h4 {
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-2);
+            color: var(--color-accent-earth);
+        }
+
+        .two-column p {
+            color: var(--color-text-secondary);
+            font-size: var(--text-base);
+        }
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+        .site-footer {
+            padding: var(--space-5) 0;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .site-footer p {
+            font-family: var(--font-ui);
+            font-size: var(--text-xs);
+            color: var(--color-text-tertiary);
+            margin: 0;
+        }
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+        @media (max-width: 768px) {
+            :root {
+                --text-4xl: 2rem;
+                --text-3xl: 1.75rem;
+                --text-2xl: 1.5rem;
+                --space-7: 4rem;
+                --space-8: 5rem;
+            }
+
+            .main-nav {
+                gap: var(--space-2);
+                font-size: 0.8rem;
+            }
+
+            .pillars {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: var(--text-3xl);
+            }
+
+            .hero-subtitle {
+                font-size: var(--text-base);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-nav a {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Samatva</h1>
+            <nav class="main-nav" role="navigation" aria-label="Main navigation">
+                <a href="#" class="active" aria-current="page">Home</a>
+                <a href="#health">Health</a>
+                <a href="#wealth">Wealth</a>
+                <a href="#happiness">Happiness</a>
+                <a href="#balance">Balance</a>
+                <a href="#contribution">Contribution</a>
+                <a href="#about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="container">
+                <h2 class="hero-title">
+                    Balance is not something you find.<br>
+                    It is something you create, day by day,<br>
+                    through deliberate thought and quiet action.
+                </h2>
+                <p class="hero-subtitle">
+                    A resource for working professionals seeking sustainable growth 
+                    in health, wealth, and happiness—grounded in timeless principles.
+                </p>
+            </div>
+        </section>
+
+        <!-- PILLARS SECTION -->
+        <section class="pillars">
+            <div class="container">
+                <div class="pillar">
+                    <h3>Health</h3>
+                    <p>Sustainable vitality for long professional lives.</p>
+                    <a href="#health" class="pillar-link">Explore →</a>
+                </div>
+                
+                <div class="pillar">
+                    <h3>Wealth</h3>
+                    <p>Skills, ethics, and financial clarity beyond earnings.</p>
+                    <a href="#wealth" class="pillar-link">Explore →</a>
+                </div>
+                
+                <div class="pillar">
+                    <h3>Happiness</h3>
+                    <p>Relationships, purpose, and inner stability.</p>
+                    <a href="#happiness" class="pillar-link">Explore →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECONDARY LINKS -->
+        <section class="secondary-links">
+            <div class="container">
+                <p>Also: <a href="#balance">Balance</a> · <a href="#contribution">Contribution</a></p>
+            </div>
+        </section>
+
+        <!-- WHAT THIS IS SECTION -->
+        <section class="what-this-is">
+            <div class="container">
+                <h3>What This Is / Is Not</h3>
+                <div class="two-column">
+                    <div>
+                        <h4>This is not:</h4>
+                        <p>A productivity hack library. A motivational blog. A course or certification program.</p>
+                    </div>
+                    <div>
+                        <h4>This is:</h4>
+                        <p>A thoughtfully curated space for reflection and improvement. For disciplined adults who value depth over speed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Samatva. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
