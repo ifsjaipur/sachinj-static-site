@@ -74,19 +74,7 @@
         var tr = 'TEST001';
 
         // Build UPI deep link with ALL merchant parameters
-        var upiLink = 'upi://pay?'
-            + 'pa=' + encodeURIComponent(pa)
-            + '&pn=' + encodeURIComponent(pn)
-            + '&mc=' + mc
-            + '&mode=' + mode
-            + '&orgid=' + orgid
-            + '&purpose=' + purpose
-            + '&sign=' + encodeURIComponent(sign)
-            + '&am=' + am
-            + '&cu=INR'
-            + '&tn=' + encodeURIComponent(tn)
-            + '&tr=' + encodeURIComponent(tr);
-
+        var upiLink = 'upi://pay?pa=ifsjaipur@aubank&orgid=159765&pn=Sachin Jain&mode=16&purpose=00&mc=5511&sign=MEQCIGPH0w5617sOhTm71sSu7a+NhdyTEYfZP+JxvoPbEPGKAiA4Sf9pxJGpvSETBePjDIq0WzflTRyBHgF9NuUsvhdv+A== ';
         var payBtn = document.getElementById('payBtn');
         payBtn.href = upiLink;
 
