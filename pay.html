@@ -47,47 +47,61 @@
 <body>
     <div class="card">
         <div class="logo">🏦</div>
-        <h1 id="merchantName">Loading...</h1>
-        <div class="amount" id="amount"></div>
+        <h1 id="merchantName">Sachin Jain</h1>
+        <div class="amount" id="amount">₹5</div>
         <div class="details">
-            <div>Order: <strong id="orderId"></strong></div>
-            <div>UPI: <strong id="vpa"></strong></div>
+            <div>Order: <strong id="orderId">TEST001</strong></div>
+            <div>UPI: <strong id="vpa">ifsjaipur@aubank</strong></div>
         </div>
         <a id="payBtn" class="pay-btn" href="#">💰 Pay Now</a>
-        <p class="error" id="error">If the UPI app didn't open, copy this VPA and pay manually:<br><strong id="manualVpa"></strong></p>
+        <p class="error" id="error">If the UPI app didn't open, copy this VPA and pay manually:<br><strong>ifsjaipur@aubank</strong></p>
         <p class="footer">Secured by UPI • Powered by AU Bank</p>
     </div>
 
-   <script>
-    // Hardcoded for testing
-    const pa = 'ifsjaipur@upi';
-    const pn = 'Sachin Jain';
-    const am = '5';
-    const tn = 'Test Payment';
-    const tr = 'TEST001';
+    <script>
+        // AU Bank Merchant QR Parameters (from your actual QR code)
+        var pa = 'ifsjaipur@aubank';
+        var pn = 'Sachin Jain';
+        var mc = '5511';
+        var mode = '16';
+        var orgid = '159765';
+        var purpose = '00';
+        var sign = 'MEQCIGPH0w5617sOhTm71sSu7a+NhdyTEYfZP+JxvoPbEPGKAiA4Sf9pxJGpvSETBePjDIq0WzflTRyBHgF9NuUsvhdv+A==';
 
-    document.getElementById('merchantName').textContent = pn;
-    document.getElementById('amount').textContent = '₹' + am;
-    document.getElementById('orderId').textContent = tr;
-    document.getElementById('vpa').textContent = pa;
-    document.getElementById('manualVpa').textContent = pa;
+        // Payment details
+        var am = '5';
+        var tn = 'Payment to Sachin Jain';
+        var tr = 'TEST001';
 
-    const upiLink = `upi://pay?pa=${encodeURIComponent(pa)}&pn=${encodeURIComponent(pn)}&am=${am}&cu=INR&tn=${encodeURIComponent(tn)}&tr=${encodeURIComponent(tr)}`;
+        // Build UPI deep link with ALL merchant parameters
+        var upiLink = 'upi://pay?'
+            + 'pa=' + encodeURIComponent(pa)
+            + '&pn=' + encodeURIComponent(pn)
+            + '&mc=' + mc
+            + '&mode=' + mode
+            + '&orgid=' + orgid
+            + '&purpose=' + purpose
+            + '&sign=' + encodeURIComponent(sign)
+            + '&am=' + am
+            + '&cu=INR'
+            + '&tn=' + encodeURIComponent(tn)
+            + '&tr=' + encodeURIComponent(tr);
 
-    const payBtn = document.getElementById('payBtn');
-    payBtn.href = upiLink;
+        var payBtn = document.getElementById('payBtn');
+        payBtn.href = upiLink;
 
-    payBtn.addEventListener('click', function(e) {
-        setTimeout(() => {
-            document.getElementById('error').style.display = 'block';
-        }, 3000);
-    });
+        payBtn.addEventListener('click', function(e) {
+            setTimeout(function() {
+                document.getElementById('error').style.display = 'block';
+            }, 3000);
+        });
 
-    if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
-        setTimeout(() => {
-            window.location.href = upiLink;
-        }, 500);
-    }
-</script>
+        // Auto-redirect if opened on mobile
+        if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+            setTimeout(function() {
+                window.location.href = upiLink;
+            }, 500);
+        }
+    </script>
 </body>
 </html>
