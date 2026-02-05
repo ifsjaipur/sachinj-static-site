@@ -58,42 +58,36 @@
         <p class="footer">Secured by UPI • Powered by AU Bank</p>
     </div>
 
-    <script>
-        // Read payment details from URL parameters
-        const params = new URLSearchParams(window.location.search);
-        const pa = params.get('pa') || 'ifsjaipur@aubank';
-        const pn = params.get('pn') || 'Sachin Jain';
-        const am = params.get('am') || '5';
-        const tn = params.get('tn') || 'Payment';
-        const tr = params.get('tr') || 'ORDER001';
+   <script>
+    // Hardcoded for testing
+    const pa = 'ifsjaipur@aubank';
+    const pn = 'Sachin Jain';
+    const am = '5';
+    const tn = 'Test Payment';
+    const tr = 'TEST001';
 
-        // Display details
-        document.getElementById('merchantName').textContent = pn;
-        document.getElementById('amount').textContent = '₹' + am;
-        document.getElementById('orderId').textContent = tr;
-        document.getElementById('vpa').textContent = pa;
-        document.getElementById('manualVpa').textContent = pa;
+    document.getElementById('merchantName').textContent = pn;
+    document.getElementById('amount').textContent = '₹' + am;
+    document.getElementById('orderId').textContent = tr;
+    document.getElementById('vpa').textContent = pa;
+    document.getElementById('manualVpa').textContent = pa;
 
-        // Build UPI deep link
-        const upiLink = `upi://pay?pa=${encodeURIComponent(pa)}&pn=${encodeURIComponent(pn)}&am=${am}&cu=INR&tn=${encodeURIComponent(tn)}&tr=${encodeURIComponent(tr)}`;
+    const upiLink = `upi://pay?pa=${encodeURIComponent(pa)}&pn=${encodeURIComponent(pn)}&am=${am}&cu=INR&tn=${encodeURIComponent(tn)}&tr=${encodeURIComponent(tr)}`;
 
-        const payBtn = document.getElementById('payBtn');
-        payBtn.href = upiLink;
+    const payBtn = document.getElementById('payBtn');
+    payBtn.href = upiLink;
 
-        // Try auto-redirect on mobile
-        payBtn.addEventListener('click', function(e) {
-            // Show manual VPA after 3 seconds in case UPI app didn't open
-            setTimeout(() => {
-                document.getElementById('error').style.display = 'block';
-            }, 3000);
-        });
+    payBtn.addEventListener('click', function(e) {
+        setTimeout(() => {
+            document.getElementById('error').style.display = 'block';
+        }, 3000);
+    });
 
-        // Auto-redirect if opened on mobile
-        if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
-            setTimeout(() => {
-                window.location.href = upiLink;
-            }, 500);
-        }
-    </script>
+    if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+        setTimeout(() => {
+            window.location.href = upiLink;
+        }, 500);
+    }
+</script>
 </body>
 </html>
