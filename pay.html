@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay - Sachin Jain</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .logo { font-size: 48px; margin-bottom: 16px; }
+        h1 { font-size: 20px; color: #1a1a1a; margin-bottom: 8px; }
+        .amount { font-size: 36px; font-weight: 700; color: #25D366; margin: 16px 0; }
+        .details { color: #666; font-size: 14px; margin-bottom: 24px; line-height: 1.6; }
+        .pay-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 14px 48px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .pay-btn:hover { background: #1da851; }
+        .footer { margin-top: 24px; font-size: 12px; color: #999; }
+        .error { display: none; color: #e74c3c; margin-top: 16px; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="logo">🏦</div>
+        <h1 id="merchantName">Loading...</h1>
+        <div class="amount" id="amount"></div>
+        <div class="details">
+            <div>Order: <strong id="orderId"></strong></div>
+            <div>UPI: <strong id="vpa"></strong></div>
+        </div>
+        <a id="payBtn" class="pay-btn" href="#">💰 Pay Now</a>
+        <p class="error" id="error">If the UPI app didn't open, copy this VPA and pay manually:<br><strong id="manualVpa"></strong></p>
+        <p class="footer">Secured by UPI • Powered by AU Bank</p>
+    </div>
+
+    <script>
+        // Read payment details from URL parameters
+        const params = new URLSearchParams(window.location.search);
+        const pa = params.get('pa') || 'ifsjaipur@aubank';
+        const pn = params.get('pn') || 'Sachin Jain';
+        const am = params.get('am') || '5';
+        const tn = params.get('tn') || 'Payment';
+        const tr = params.get('tr') || 'ORDER001';
+
+        // Display details
+        document.getElementById('merchantName').textContent = pn;
+        document.getElementById('amount').textContent = '₹' + am;
+        document.getElementById('orderId').textContent = tr;
+        document.getElementById('vpa').textContent = pa;
+        document.getElementById('manualVpa').textContent = pa;
+
+        // Build UPI deep link
+        const upiLink = `upi://pay?pa=${encodeURIComponent(pa)}&pn=${encodeURIComponent(pn)}&am=${am}&cu=INR&tn=${encodeURIComponent(tn)}&tr=${encodeURIComponent(tr)}`;
+
+        const payBtn = document.getElementById('payBtn');
+        payBtn.href = upiLink;
+
+        // Try auto-redirect on mobile
+        payBtn.addEventListener('click', function(e) {
+            // Show manual VPA after 3 seconds in case UPI app didn't open
+            setTimeout(() => {
+                document.getElementById('error').style.display = 'block';
+            }, 3000);
+        });
+
+        // Auto-redirect if opened on mobile
+        if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+            setTimeout(() => {
+                window.location.href = upiLink;
+            }, 500);
+        }
+    </script>
+</body>
+</html>
